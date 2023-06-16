@@ -10,7 +10,7 @@
     // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
 
-    "outDir": "./build" /* Specify an output folder for all emitted files. */,
+    "outDir": "dist" /* Specify an output folder for all emitted files. */,
 
     "noEmit": true /* Disable emitting files from a compilation. */,
 
