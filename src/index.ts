@@ -1,21 +1,14 @@
-import Express from "express";
-import Cors from "cors";
-import http from "http";
-import { Server } from "socket.io";
+import { io, server } from "../utils/config/server-config";
+import type { Socket } from "../utils/types/projectTypes";
 
-const app = Express();
-const server = http.createServer(app);
-const io = new Server(server);
-app.use(
-  Cors({
-    origin: "*",
-    credentials: true,
-  })
-);
+import { registar_room_handler, registar_join_handler } from "./Handlers/room";
 
-io.on("connection", (socket) => {
-  console.log("a user connected");
-});
+const onConnection = (socket: Socket) => {
+  registar_room_handler(io, socket);
+  registar_join_handler(io, socket);
+};
+
+io.on("connection", onConnection);
 
 server.listen(process.env.PORT, () => {
   console.log(`server is active on port ${process.env.PORT}`);
